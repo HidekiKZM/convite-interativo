@@ -1,0 +1,90 @@
+/* A classe open inicia a sequência inteira; tempos concentrados no CSS. */
+.opening {
+  --seal-duration: 240ms;
+  --flap-duration: 800ms;
+  --card-duration: 850ms;
+  --fade-duration: 450ms;
+  --card-pause: 300ms;
+  --card-delay: calc(var(--seal-duration) + var(--flap-duration));
+  --fade-delay: calc(var(--card-delay) + var(--card-duration) + var(--card-pause));
+}
+
+.envelope.open .wax-seal {
+  pointer-events: none;
+  animation: seal-away var(--seal-duration) ease-in forwards;
+}
+
+.envelope.open .envelope-flap {
+  animation: flap-open var(--flap-duration) var(--seal-duration) ease-in-out forwards;
+}
+
+.envelope.open .invitation-card {
+  animation: card-rise var(--card-duration) var(--card-delay) ease-in-out forwards;
+}
+
+.opening.is-opening {
+  animation: envelope-away var(--fade-duration) var(--fade-delay) ease-out forwards;
+}
+
+.invitation--revealing .hero {
+  animation: invitation-appear 650ms ease-out both;
+}
+
+@keyframes seal-away {
+  to { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+}
+
+@keyframes flap-open {
+  0% { transform: rotateX(0deg); z-index: 3; }
+  49% { z-index: 3; }
+  50% { z-index: 0; }
+  100% { transform: rotateX(180deg); z-index: 0; }
+}
+
+@keyframes card-rise {
+  to { transform: translateY(-65%); }
+}
+
+@keyframes envelope-away {
+  to { opacity: 0; }
+}
+
+@keyframes invitation-appear {
+  from { opacity: 0; transform: translateY(1rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Classes adicionadas apenas quando o observador estiver disponível.
+   Sem JavaScript, o conteúdo permanece visível por padrão. */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 750ms ease-out, transform 750ms ease-out;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal:focus-within {
+  opacity: 1;
+  transform: translateY(0);
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .opening.is-opening,
+  .envelope.open .wax-seal,
+  .envelope.open .envelope-flap,
+  .envelope.open .invitation-card,
+  .invitation--revealing .hero {
+    animation: none;
+  }
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Um convite especial. Confira os detalhes do evento e participe conosco.">
+  <title>Convite digital</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/content.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body class="invitation">
+  <noscript>Ative o JavaScript para carregar os dados personalizados e os links deste convite.</noscript>
+  <a class="skip-link" data-config="texts.skip" href="#conteudo">Ir para o convite</a>
+
+  <!-- 1. Loading: reservado para futura ativação pelo JavaScript. -->
+  <div id="loading" class="loading" role="status" aria-live="polite" hidden>
+    <p class="loading__text" data-config="texts.loading">Preparando seu convite…</p>
+  </div>
+
+  <!-- 2. Abertura / envelope -->
+  <section id="abertura" class="opening" aria-labelledby="abertura-titulo">
+    <h1 id="abertura-titulo" class="opening__title" data-config="texts.openingTitle">Um convite especial para você</h1>
+    <p class="opening__description" data-config="texts.openingDescription">Abra o convite para conhecer os detalhes.</p>
+    <div class="envelope-container envelope">
+      <div class="envelope-back" aria-hidden="true"></div>
+      <div class="invitation-card" aria-hidden="true">
+        <p class="invitation-card__message" data-config="texts.card">Sua presença fará parte desta história.</p>
+      </div>
+      <div class="envelope-front" aria-hidden="true"></div>
+      <div class="envelope-flap" aria-hidden="true"></div>
+      <a id="abrir-convite" class="wax-seal" data-config="texts.open" href="#conteudo">Abrir convite</a>
+    </div>
+  </section>
+
+  <main id="conteudo" class="invitation__main" tabindex="-1">
+    <!-- 3. Hero / capa -->
+    <section id="capa" class="hero" aria-labelledby="capa-titulo">
+      <p class="hero__eyebrow" data-config="texts.heroEyebrow">Você está convidado</p>
+      <h2 id="capa-titulo" class="hero__title" data-config="texts.heroTitle" tabindex="-1">Nosso casamento</h2>
+      <p class="hero__description" data-config="texts.heroDescription">Um momento especial para celebrar juntos.</p>
+    </section>
+
+    <!-- 4. Mensagem -->
+    <section id="mensagem" class="invitation-section message" aria-labelledby="mensagem-titulo">
+      <h2 id="mensagem-titulo" data-config="texts.messageTitle" class="invitation-section__title">Uma mensagem para você</h2>
+      <p class="message__text" data-config="texts.message">Uma celebração para compartilhar.</p>
+    </section>
+
+    <!-- 5. Data e horário -->
+    <section id="data-horario" class="invitation-section event-date" aria-labelledby="data-horario-titulo">
+      <h2 id="data-horario-titulo" data-config="texts.dateTitle" class="invitation-section__title">Data e horário</h2>
+      <!-- Data e horário preenchidos a partir de js/config.js. -->
+      <dl class="event-date__details">
+        <dt data-config="texts.dateLabel">Data</dt>
+        <dd><time id="evento-data">Data a informar</time></dd>
+        <dt data-config="texts.timeLabel">Horário</dt>
+        <dd><time id="evento-horario">Horário a informar</time></dd>
+      </dl>
+      <a id="adicionar-agenda" class="button event-date__calendar" data-config="buttons.calendar" target="_blank" rel="noopener noreferrer" aria-label="Adicionar à agenda no Google Calendar (abre em nova aba)" hidden>Adicionar à agenda</a>
+    </section>
+
+    <!-- 6. Local -->
+    <section id="local" class="invitation-section location" aria-labelledby="local-titulo">
+      <h2 id="local-titulo" data-config="texts.locationTitle" class="invitation-section__title">Local da celebração</h2>
+      <p class="location__name" data-config="venue.name">Local a informar</p>
+      <p class="location__address">Endereço a informar</p>
+      <!-- Links preenchidos a partir de js/config.js. -->
+      <a id="como-chegar" class="button location__directions" data-config="buttons.maps" target="_blank" rel="noopener noreferrer" aria-label="Como chegar no Google Maps (abre em nova aba)" hidden>Como chegar</a>
+    </section>
+
+    <!-- 7. Programação -->
+    <section id="programacao" class="invitation-section schedule" aria-labelledby="programacao-titulo">
+      <h2 id="programacao-titulo" data-config="texts.scheduleTitle" class="invitation-section__title">Programação</h2>
+      <ol class="schedule__list"></ol>
+    </section>
+
+    <!-- 8. Dress code -->
+    <section id="dress-code" class="invitation-section dress-code" aria-labelledby="dress-code-titulo">
+      <h2 id="dress-code-titulo" data-config="texts.dressCodeTitle" class="invitation-section__title">Como se vestir</h2>
+      <p class="dress-code__description" data-config="texts.dressCode">Traje a informar.</p>
+    </section>
+
+    <!-- 9. Presentes -->
+    <section id="presentes" class="invitation-section gifts" aria-labelledby="presentes-titulo">
+      <h2 id="presentes-titulo" data-config="texts.giftsTitle" class="invitation-section__title">Presentes</h2>
+      <p class="gifts__description" data-config="texts.gifts">Sua presença é especial.</p>
+      <a id="lista-presentes" class="button gifts__button" data-config="buttons.gifts" target="_blank" rel="noopener noreferrer" hidden>Lista de presentes</a>
+    </section>
+
+    <!-- 10. Confirmação de presença -->
+    <section id="confirmacao" class="invitation-section rsvp" aria-labelledby="confirmacao-titulo">
+      <h2 id="confirmacao-titulo" data-config="texts.rsvpTitle" class="invitation-section__title">Confirme sua presença</h2>
+      <p class="rsvp__description" data-config="texts.rsvpDescription">Confirme sua presença enviando uma mensagem pelo WhatsApp.</p>
+      <p class="rsvp__deadline" data-config="rsvp.deadline"></p>
+      <a id="confirmar-presenca" class="button rsvp__button" data-config="buttons.rsvp" target="_blank" rel="noopener noreferrer" aria-label="Confirmar presença pelo WhatsApp (abre em nova aba)" hidden>Confirmar presença</a>
+    </section>
+  </main>
+
+  <!-- 11. Encerramento -->
+  <footer id="encerramento" class="closing" aria-labelledby="encerramento-titulo">
+    <h2 id="encerramento-titulo" class="closing__title" data-config="texts.closingTitle">Esperamos por você!</h2>
+    <p class="closing__message" data-config="texts.closingMessage">Obrigado por fazer parte deste momento.</p>
+    <p class="closing__signature" data-config="texts.closingSignature">Com carinho</p>
+  </footer>
+</body>
+</html>
