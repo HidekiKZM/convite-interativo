@@ -1,0 +1,49 @@
+/* Identidade visual: papel claro, tinta quente e detalhes discretos. */
+:root {
+  color-scheme: light;
+
+  /* Cores */
+  --color-background: #eee9e1;
+  --color-paper: #faf7f1;
+  --color-paper-fold: #efe7da;
+  --color-ink: #403b35;
+  --color-muted: #71675d;
+  --color-accent: #796044;
+  --color-line: #d8cbbb;
+  --color-seal: #795c4c;
+  --color-on-seal: #fffaf3;
+
+  /* Fontes */
+  --font-heading: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --font-body: "Segoe UI", Arial, sans-serif;
+
+  /* Espaçamentos */
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --page-gutter: clamp(1.25rem, 6vw, 2.5rem);
+  --section-space: clamp(4rem, 13vw, 6rem);
+
+  /* Tamanhos */
+  --page-width: 33.75rem;
+  --page-margin: 0px;
+  --text-width: 34ch;
+  --envelope-width: 23rem;
+  --touch-target: 2.75rem;
+  --text-small: 0.8125rem;
+  --text-base: 1rem;
+  --text-title: clamp(1.875rem, 7vw, 2.5rem);
+  --text-display: clamp(2.5rem, 10vw, 3.75rem);
+  --line-body: 1.8;
+  --line-heading: 1.2;
+
+  /* Bordas */
+  --border-fine: 1px solid var(--color-line);
+  --border-button: 1px solid var(--color-accent);
+  --radius-small: 2px;
+  --radius-seal: 50%;
+}

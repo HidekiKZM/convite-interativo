@@ -1,0 +1,31 @@
+/* A base fluida cobre 320, 375, 390 e 430px sem saltos de layout. */
+@media (min-width: 48rem) {
+  :root {
+    --page-gutter: 3.5rem;
+    --section-space: 6rem;
+    --page-margin: 3rem;
+  }
+
+  .invitation {
+    border: var(--border-fine);
+  }
+}
+
+/* Reduz apenas o respiro da introdução quando falta altura. */
+@media (max-height: 700px) {
+  .opening {
+    padding-block: var(--space-5);
+  }
+}
+
+@media (max-height: 500px) {
+  :root { --page-margin: 0px; }
+
+  .opening { padding-block: var(--space-3); }
+  .opening__title { font-size: 1.875rem; }
+  .opening__description { margin-top: var(--space-1); }
+  .envelope-container {
+    max-width: min(15rem, 50svh);
+    margin-top: 16svh;
+  }
+}

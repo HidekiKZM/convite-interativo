@@ -2,6 +2,17 @@
 
 Abra `index.html` no navegador. Não há dependências ou etapa de compilação.
 
+## Verificar os dados antes de publicar
+
+Com Node.js instalado, execute `node scripts/check-config.cjs`. O verificador
+confere datas reais, horários, ordem de início/término, fuso, URLs e telefone.
+Avisos destacam dados provisórios e diferenças entre os locais da agenda e do mapa.
+Node é usado somente nessa verificação; o site continua funcionando sem build.
+O comando avalia o arquivo local `js/config.js`; use somente código confiável do projeto.
+
+O diagnóstico, as limitações das evidências REA e o plano estão em
+[`docs/diagnostico-e-plano.md`](docs/diagnostico-e-plano.md).
+
 ## Personalizar para outro cliente
 
 Edite **`js/config.js`**, que contém o objeto `INVITE_CONFIG`:
@@ -15,7 +26,19 @@ Edite **`js/config.js`**, que contém o objeto `INVITE_CONFIG`:
 - `schedule`: itens da programação; adicione ou remova objetos. Uma lista vazia oculta a seção.
 - `texts` e `buttons`: mensagens, títulos de seções e rótulos dos botões.
 
-`js/content.js` preenche o HTML usando `textContent`, formata datas e gera links. `js/script.js` controla envelope e rolagem. CSS e animações permanecem em `css/`.
+`js/content.js` preenche o HTML usando `textContent` e formata datas.
+`js/links.js` gera os links externos, `js/envelope.js` controla a abertura e
+`js/animations.js` controla as entradas na rolagem. `js/main.js` inicializa essas
+responsabilidades em ordem, depois do HTML. As funções ficam em `window.InviteApp`;
+são scripts clássicos com `defer`, mantendo a abertura direta de `index.html`.
+
+O CSS é carregado em ordem: `variables.css` (tokens), `reset.css` (base),
+`style.css` (seções), `envelope.css` (camadas), `responsive.css` (telas) e
+`animations.css` (movimento e preferência de movimento reduzido).
+
+Execute `node --test tests/links.test.cjs` para verificar os destinos gerados e
+a ordem de inicialização. Esses testes não substituem testes de layout e
+animação no navegador.
 
 O HTML contém textos genéricos de fallback. Os dados personalizados e links precisam de JavaScript; não é necessário repetir os dados do cliente no HTML.
 
